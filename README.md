@@ -97,7 +97,21 @@ Outputs will be in the Test directory. <br />
 Make sure delete Test directory before commit. <br />
 
 ### Others
-```
+
+Generate Ntuple file list: <br />
+```bash
+cd $CMSSW_BASE/src/UserCode/Haa4bTools/EOSTools
 python genList.py -d /eos/cms/store/user/georgia/results_2018_03_03 -l
 python genList.py -d /eos/cms/store/user/georgia/results_2018_03_03/MinBias -l
 ```
+
+Special treat for WXJets and DYXJets when train model: <br />
+```bash
+cd $CMSSW_BASE/src/UserCode/Haa4bTools/AnaModules
+./LHESplit LHENJets.root 0
+./LHESplit LHENJets.root 1
+./LHESplit LHENJets.root 2
+./LHESplit LHENJets.root 3
+./LHESplit LHENJets.root 4
+```
+, where the LHENJets.root can be WJets or DY_10to50, DY_50toInf, hadd all root files from same physics process including XJets files. <br />
